@@ -94,11 +94,19 @@ fun main() {
 
     println("введите номер месяца")
     var numberMonth = readln().toInt()
-    when (numberMonth) {
-        12,1,2 -> println("winter")
-        3,4,5 -> println("spring")
-        6,7,8 -> println("summer")
-        9,10,11 -> println("autumn")
+//    when (numberMonth) {
+//        12,1,2 -> println("winter")
+//        3,4,5 -> println("spring")
+//        6,7,8 -> println("summer")
+//        9,10,11 -> println("autumn")
+//    }
+    var monthSeason =  when (numberMonth) {
+        12,1,2 -> "winter"
+        3,4,5 -> "spring"
+        6,7,8 -> "summer"
+        9,10,11 -> "autumn"
+        else -> "error"
     }
+    println(monthSeason)
 
 }
