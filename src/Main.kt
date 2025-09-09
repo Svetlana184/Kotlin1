@@ -79,18 +79,26 @@ fun main() {
 //    {
 //        println("-----")
 //    }
-    println("введите номер дня недели")
-    val  n = readln().toInt()
-    when (n) {
-        1-> println("понедельник")
-        2-> println("вторник")
-        3-> println("среда")
-        4-> println("четверг")
-        5-> println("пятница")
-        6-> println("суббота")
-        7-> println("воскресенье")
-        else -> println("---")
+//    println("введите номер дня недели")
+//    val  n = readln().toInt()
+//    when (n) {
+//        1-> println("понедельник")
+//        3-> println("среда")
+//        4-> println("четверг")
+//        5-> println("пятница")
+//        6-> println("суббота")
+//        7-> println("воскресенье")
+//        else -> println("---")
+//
+//    }
 
+    println("введите номер месяца")
+    var numberMonth = readln().toInt()
+    when (numberMonth) {
+        12,1,2 -> println("winter")
+        3,4,5 -> println("spring")
+        6,7,8 -> println("summer")
+        9,10,11 -> println("autumn")
     }
 
 }
