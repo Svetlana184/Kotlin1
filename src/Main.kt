@@ -89,7 +89,7 @@ fun main() {
         5-> println("пятница")
         6-> println("суббота")
         7-> println("воскресенье")
-
+        else -> println("---")
 
     }
 
