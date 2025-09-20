@@ -1,3 +1,5 @@
+import kotlin.random.Random
+
 //psvm - сокращение для функции main
 /*
     sout - сокращение для println
@@ -92,21 +94,160 @@ fun main() {
 //
 //    }
 
-    println("введите номер месяца")
-    var numberMonth = readln().toInt()
+
+    //switch
+//    println("введите номер месяца")
+//    var numberMonth = readln().toInt()
 //    when (numberMonth) {
 //        12,1,2 -> println("winter")
 //        3,4,5 -> println("spring")
 //        6,7,8 -> println("summer")
 //        9,10,11 -> println("autumn")
 //    }
-    var monthSeason =  when (numberMonth) {
-        12,1,2 -> "winter"
-        3,4,5 -> "spring"
-        6,7,8 -> "summer"
-        9,10,11 -> "autumn"
-        else -> "error"
-    }
-    println(monthSeason)
+//    var monthSeason =  when (numberMonth) {
+//        12,1,2 -> "winter"
+//        3,4,5 -> "spring"
+//        6,7,8 -> "summer"
+//        9,10,11 -> "autumn"
+//        else -> "error"
+//    }
+//    println(monthSeason)
 
+
+    //циклы
+//    var i =10;
+//    while(i>0){
+//        println(i*i)
+//        i--
+//    }
+//
+//    do{
+//        println(i*i)
+//        if(i==5) break
+//        i++
+//    } while(i<11)
+
+//    for(j in 1..10){
+//        println(j)
+//        for(k in 1..10){
+//            println(j*k)
+//        }
+//
+//    }
+//    for(g in 10 downTo 1 step 2){
+//        println(g)
+//    }
+//    for(g in 1 until 10 step 2){
+//        println(g)
+//    }
+//
+//    if(7 in 1..10) println("yes")
+//    if(7 !in 1..10) println("no")
+
+    //массивы
+//    val meArray = arrayOf(1,2,3,4,5)
+//    println(meArray[3])
+//    println(meArray.size)
+//    var myArray = arrayOf(1,2,3,4,5, "korushka", "ttt", 5.0)
+//    val arr1 = arrayOf<Int>(1,2,3,4,5)
+//    println(arr1[2])
+//    val arr2 = intArrayOf(1,2,3,4,5)
+//    println(arr2[2])
+//    for((i,v) in arr1.withIndex()) {
+//        println("index: ${i}")
+//        println("value: ${v}")
+//    }
+//    for(index in arr2.indices) println("index: $index значение: ${arr2[index]}")
+//
+//    //сложение массивов
+//    val num1 = intArrayOf(1,2,3,4,5)
+//    val num2 = intArrayOf(6,7,8,9)
+//    val num3 = num1 + num2
+//    for(index in num3.indices) println("index: $index значение: ${num3[index]}")
+//
+//    //массив со значениями null
+//    var nullArray = arrayOfNulls<String>(3)
+//    for(index in nullArray.indices) println("index: $index значение: ${nullArray[index]}")
+//    nullArray.set(1,"1")
+//    nullArray[2] = "2"
+//
+//    var arr3 = emptyArray<String>()
+//    arr3+="1"
+//    arr3+="2"
+//    arr3+="3"
+//    for(index in arr3.indices) println("index: $index значение: ${arr3[index]}")
+
+    //конструктор массивов
+//    var rray1 = Array(5, {i->i*2})
+//    for (i in rray1) println(i)
+//    val letters = Array<String>(26) {i->('A'+i).toString()}
+//    for (i in letters) println(i)
+//    letters.forEach {i-> println(i) }
+//    letters.forEachIndexed{i,j-> println("i: $i j $j")}
+//
+//    //поворот массива
+//    var reverseLetters = letters.reversedArray()
+//    reverseLetters.forEach {i-> print("$i ") }
+//    println()
+//    reverseLetters.reversed()
+//    reverseLetters.forEach {i-> print("$i ") }
+//    println()
+//
+//    var randomNumber = Random.nextInt(100)
+//
+//    var intArr = Array(5) { _ ->Random.nextInt(100)}
+//    intArr.forEach {i-> print("$i ") }
+//    println()
+//    //сортировка
+//    intArr.sort(0,3)
+//    intArr.forEach {i-> print("$i ") }
+//    println()
+//    intArr.sortDescending()
+//    intArr.forEach {i-> print("$i ") }
+//    println()
+//
+//    val isContains = intArr.contains(1)
+//    println(isContains)
+//    println(intArr.average())
+//    println(intArr.sum())
+//    println(intArr.max())
+//    println(intArr.min())
+//
+//
+//    var intArr2 = Array(5) { _ ->Random.nextInt(100)}
+//    val intersectMas = intArr.intersect(intArr2.toList()).toIntArray() //общие элементы двух массивов
+//    println(intersectMas.contentToString())
+
+    //перемешать элементы
+//    intArr.shuffle()
+//    intArr.forEach {i-> print("$i ") }
+//    println()
+//
+//    //операция с каждым элементом массива по очереди
+//    val nums = arrayOf(1,2,3,4,5,5)
+//    var str = ""
+//    nums.onEach { str+= "${it*2} "  }
+//    println( nums.contentToString())
+//
+//    //удалить дубликаты
+//    val newSet = nums.distinct()
+//    println( nums.toSet().joinToString())
+
+
+
+    //двумерные массивы
+    var cinema = arrayOf<Array<Int>>()
+    for(i in 0..10) {
+        var array = arrayOf<Int>()
+        for(j in 0..10) {
+            array += Random.nextInt(100)
+        }
+        cinema+=array
+    }
+    for(array in cinema){
+        for(value in array){
+            print("$value ")
+        }
+        println()
+    }
 }
