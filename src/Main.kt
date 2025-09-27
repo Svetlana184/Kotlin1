@@ -236,18 +236,141 @@ fun main() {
 
 
     //двумерные массивы
-    var cinema = arrayOf<Array<Int>>()
-    for(i in 0..10) {
-        var array = arrayOf<Int>()
-        for(j in 0..10) {
-            array += Random.nextInt(100)
-        }
-        cinema+=array
-    }
-    for(array in cinema){
-        for(value in array){
-            print("$value ")
-        }
-        println()
+//    var cinema = arrayOf<Array<Int>>()
+//    for(i in 0..10) {
+//        var array = arrayOf<Int>()
+//        for(j in 0..10) {
+//            array += Random.nextInt(100)
+//        }
+//        cinema+=array
+//    }
+//    for(array in cinema){
+//        for(value in array){
+//            print("$value ")
+//        }
+//        println()
+//    }
+
+
+    //ФУНКЦИОНАЛЬНОЕ ПРОГРАММИРОВАНИЕ
+//    var n = readln()
+//    hello(n)
+//    hello()
+//    hello(age = 10, name="john")
+//
+//   double(intArrayOf(3,7,9))
+
+//    val sum1 =  sum(1,2,3)
+//    println(sum1)
+//    changeNumbers(*intArrayOf(1,2,3,4), koef = 8)
+//
+//    println(square(5))
+//
+//    var message: ()-> Unit  = ::hello2
+//    message()
+//    var operation: (Int, Int) -> Int = ::SumSum
+//    println(operation(1,2))
+//
+//    displayMessage { message =::morning }
+//    displayMessage { message= ::evening }
+//    action(2,3, ::sub)
+//    var x = (selectAction(key=1 ))
+//    println(x(9,9))
+//
+//    val sum = fun(a: Int, b: Int)= a+b
+//    println(sum(1,2))
+//
+//    doOperation(4,5,fun(x:Int, y:Int) : Int = x+y)
+//
+//    val action = sAction(1)
+//    println(action(5,9))
+
+
+//лямбда выражения
+    val hello = {println("Hello")}
+//    hello()
+    {message:String-> println(message)}("hi")
+    val sum = { x: Int, y:Int -> println("sum of $x, $y")}
+    sum()
+}
+
+
+fun doOperation(x:Int, y:Int, op: (Int, Int) -> Int): Int {
+    return op(x,y)
+}
+fun action(n1: Int, n2: Int, operation: (Int, Int) -> Int) {
+    println(operation(n1,n2))}
+fun selectAction(key: Int ):(Int, Int) -> Int{
+    when (key) {
+        1 -> return ::multiple
+        2 -> return ::sub
+        else -> return ::div
     }
 }
+fun sAction(key:Int):(Int,Int)->Int{
+    when(key){
+        1 -> return  fun(x:Int, y:Int) = x+y
+        else -> return fun(x:Int, y:Int) = x-y
+    }
+}
+
+
+//ФУНКЦИИ
+fun empty(a:Int, b:Int) = 0
+fun sub (a:Int, b:Int)= a-b
+fun multiple (a:Int, b:Int)= a*b
+fun div(a:Int, b:Int)= a/b
+fun displayMessage(message: ()-> Unit) { message()}
+
+fun morning(){
+    println("Good Morning")
+}
+fun evening(){
+    println("Good Evening")
+}
+
+fun hello2(){
+    println("Hello world")
+}
+fun hello(name: String = "user", age: Int = 0) {
+    println("Hello $name, I am $age")
+}
+fun double(numbers : IntArray){
+    numbers[0] = numbers[0]*2
+    println(numbers[0])
+}
+fun sum(vararg numbers:Int): Int{
+    var result =0;
+    for (number in numbers){ result += number }
+    return result
+}
+
+
+
+//оператор * (spread operator) позволяет передать параметру в качестве значения элементы из массива
+fun changeNumbers(vararg numbers:Int, koef:Int){
+    for(number in numbers) println(number*koef)
+}
+//тип Unit - аналог void
+fun hello1(name: String = "user", age: Int = 0) : Unit {
+    println("Hello $name, I am $age")
+}
+//однострочные функции single expression function
+fun square(n:Int) = n*n
+
+//внутренние или вложенные функции (локальные)
+fun compareAge(age : Int) {
+    fun ageValid(age : Int) : Boolean {
+        return age in 1..149
+    }
+    if(ageValid(age)){
+        if (age>=18) println("ok")
+        else println("error")
+    }
+    else println("invalid age")
+}
+
+//перегрузка функций
+fun SumSum(a:Int, b:Int) : Int = a+b
+fun SumSum(a:Double, b:Double) : Double = a+b
+
