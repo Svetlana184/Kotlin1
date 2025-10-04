@@ -41,9 +41,9 @@ import kotlin.random.Random
 *   in
 * */
 
-const val maxAge = 150
-
-fun main() {
+//const val maxAge = 150
+//
+//fun main() {
 //    println("Enter your age:")
 //    var age = readln().toInt()
 //    println("Мне $age")
@@ -287,92 +287,124 @@ fun main() {
 
 
 //лямбда выражения
-    val hello = {println("Hello")}
-//    hello()
-    {message:String-> println(message)}("hi")
-    val sum = { x: Int, y:Int -> println("sum of $x, $y")}
-    sum()
+//    val hello = {println("Hello")}
+////    hello()
+//    {message:String-> println(message)}("hi")
+//    val sum = { x: Int, y:Int -> println("sum of $x, $y")}
+//    sum()
+//}
+//
+//
+//
+//
+//fun doOperation(x:Int, y:Int, op: (Int, Int) -> Int): Int {
+//    return op(x,y)
+//}
+//fun action(n1: Int, n2: Int, operation: (Int, Int) -> Int) {
+//    println(operation(n1,n2))}
+//fun selectAction(key: Int ):(Int, Int) -> Int{
+//    when (key) {
+//        1 -> return ::multiple
+//        2 -> return ::sub
+//        else -> return ::div
+//    }
+//}
+//fun sAction(key:Int):(Int,Int)->Int{
+//    when(key){
+//        1 -> return  fun(x:Int, y:Int) = x+y
+//        else -> return fun(x:Int, y:Int) = x-y
+//    }
+//}
+//
+//
+////ФУНКЦИИ
+//fun empty(a:Int, b:Int) = 0
+//fun sub (a:Int, b:Int)= a-b
+//fun multiple (a:Int, b:Int)= a*b
+//fun div(a:Int, b:Int)= a/b
+//fun displayMessage(message: ()-> Unit) { message()}
+//
+//fun morning(){
+//    println("Good Morning")
+//}
+//fun evening(){
+//    println("Good Evening")
+//}
+//
+//fun hello2(){
+//    println("Hello world")
+//}
+//fun hello(name: String = "user", age: Int = 0) {
+//    println("Hello $name, I am $age")
+//}
+//fun double(numbers : IntArray){
+//    numbers[0] = numbers[0]*2
+//    println(numbers[0])
+//}
+//fun sum(vararg numbers:Int): Int{
+//    var result =0;
+//    for (number in numbers){ result += number }
+//    return result
+//}
+
+
+
+////оператор * (spread operator) позволяет передать параметру в качестве значения элементы из массива
+//fun changeNumbers(vararg numbers:Int, koef:Int){
+//    for(number in numbers) println(number*koef)
+//}
+////тип Unit - аналог void
+//fun hello1(name: String = "user", age: Int = 0) : Unit {
+//    println("Hello $name, I am $age")
+//}
+////однострочные функции single expression function
+//fun square(n:Int) = n*n
+//
+////внутренние или вложенные функции (локальные)
+//fun compareAge(age : Int) {
+//    fun ageValid(age : Int) : Boolean {
+//        return age in 1..149
+//    }
+//    if(ageValid(age)){
+//        if (age>=18) println("ok")
+//        else println("error")
+//    }
+//    else println("invalid age")
+//}
+//
+////перегрузка функций
+//fun SumSum(a:Int, b:Int) : Int = a+b
+//fun SumSum(a:Double, b:Double) : Double = a+b
+//
+
+//Замыкания
+fun main() {
+    val fn = outer();
+    fn()
+    fn()
+    fn()
+    val func = multiply(5)
+    var result = func(6)
+    println(result)
 }
 
-
-
-
-fun doOperation(x:Int, y:Int, op: (Int, Int) -> Int): Int {
-    return op(x,y)
-}
-fun action(n1: Int, n2: Int, operation: (Int, Int) -> Int) {
-    println(operation(n1,n2))}
-fun selectAction(key: Int ):(Int, Int) -> Int{
-    when (key) {
-        1 -> return ::multiple
-        2 -> return ::sub
-        else -> return ::div
+fun outer():()->Unit{
+    var  n= 5;
+    fun inner(){
+        n++
+        println(n)
     }
-}
-fun sAction(key:Int):(Int,Int)->Int{
-    when(key){
-        1 -> return  fun(x:Int, y:Int) = x+y
-        else -> return fun(x:Int, y:Int) = x-y
-    }
+    return ::inner
 }
 
-
-//ФУНКЦИИ
-fun empty(a:Int, b:Int) = 0
-fun sub (a:Int, b:Int)= a-b
-fun multiple (a:Int, b:Int)= a*b
-fun div(a:Int, b:Int)= a/b
-fun displayMessage(message: ()-> Unit) { message()}
-
-fun morning(){
-    println("Good Morning")
-}
-fun evening(){
-    println("Good Evening")
-}
-
-fun hello2(){
-    println("Hello world")
-}
-fun hello(name: String = "user", age: Int = 0) {
-    println("Hello $name, I am $age")
-}
-fun double(numbers : IntArray){
-    numbers[0] = numbers[0]*2
-    println(numbers[0])
-}
-fun sum(vararg numbers:Int): Int{
-    var result =0;
-    for (number in numbers){ result += number }
-    return result
+fun multiply(n:Int):(Int)-> Int{
+    return  {m:Int -> n*m}
 }
 
 
 
-//оператор * (spread operator) позволяет передать параметру в качестве значения элементы из массива
-fun changeNumbers(vararg numbers:Int, koef:Int){
-    for(number in numbers) println(number*koef)
-}
-//тип Unit - аналог void
-fun hello1(name: String = "user", age: Int = 0) : Unit {
-    println("Hello $name, I am $age")
-}
-//однострочные функции single expression function
-fun square(n:Int) = n*n
+///ООП Котлин
+/*
 
-//внутренние или вложенные функции (локальные)
-fun compareAge(age : Int) {
-    fun ageValid(age : Int) : Boolean {
-        return age in 1..149
-    }
-    if(ageValid(age)){
-        if (age>=18) println("ok")
-        else println("error")
-    }
-    else println("invalid age")
-}
-
-//перегрузка функций
-fun SumSum(a:Int, b:Int) : Int = a+b
-fun SumSum(a:Double, b:Double) : Double = a+b
+ */
 
