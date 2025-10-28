@@ -31,6 +31,11 @@ fun main(){
     val group1 = listOf(Student("Misha"), Student("Bob"), Student("Alice"))
     val namesList = group1.mapIndexed{ idx, name -> "${idx + 1}.$name" }
     namesList.forEach { println(it) }
+
+    //группировка
+
+
+    //сортировка
 }
 
 data class Chel(var name: String, var age: Int)
